@@ -20,6 +20,7 @@
       <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
       <quarkus.platform.version>1.8.1.Final</quarkus.platform.version>
       <surefire-plugin.version>2.22.1</surefire-plugin.version>
+      <version.protostream>4.3.3.Final</version.protostream>
    </properties>
 
    <dependencies>
@@ -32,12 +33,12 @@
       <dependency>
          <groupId>org.infinispan.protostream</groupId>
          <artifactId>protostream</artifactId>
-         <version>4.3.3.Final</version>
+         <version>${version.protostream}</version>
       </dependency>
       <dependency>
          <groupId>org.infinispan.protostream</groupId>
          <artifactId>protostream-processor</artifactId>
-         <version>4.3.3.Final</version>
+         <version>${version.protostream}</version>
       </dependency>
       <dependency>
          <groupId>jakarta.annotation</groupId>
@@ -51,7 +52,14 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>${compiler-plugin.version}</version>
             <configuration>
-<!--               <fork>true</fork>-->
+               <fork>true</fork>
+               <annotationProcessorPaths>
+                  <path>
+                     <groupId>org.infinispan.protostream</groupId>
+                     <artifactId>protostream-processor</artifactId>
+                     <version>${version.protostream}</version>
+                  </path>
+               </annotationProcessorPaths>
             </configuration>
          </plugin>
       </plugins>
